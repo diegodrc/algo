@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Node a = new Node("a");
+		Node b = new Node("b");
+		Node c = new Node("c");
+		Node d = new Node("d");
+		Node e = new Node("e");
+		Node f = new Node("f");
+		
+		a.Left = b;
+		a.Right = c;
+		b.Left = d;
+		b.Right = e;
+		c.Right = f;
+		
+		a.PrintDFS();
+	}
+}
+
+public class Node {
+	public Node Left { get; set; } = null!;
+	public Node Right { get; set; } = null!;
+	public String Value { get; set; }
+	public Node(String v) {
+		Value = v;
+	}
+	public void PrintDFS() {
+		Console.Write($"{Value} ");
+		if(Left is not null) Left.PrintDFS();
+		if(Right is not null) Right.PrintDFS();
+	}
+}
